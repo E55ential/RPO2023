@@ -1,12 +1,15 @@
-
 # For more information about using CMake with Android Studio, read the
 # documentation: https://d.android.com/studio/projects/add-native-code.html
 
 # Sets the minimum version of CMake required to build the native library.
 
-cmake_minimum_required(VERSION 3.18.1)
+cmake_minimum_required(VERSION 3.22.1)
 
 # Declares and names the project.
+
+
+
+
 
 project("fclient")
 
@@ -14,14 +17,6 @@ project("fclient")
 # or SHARED, and provides the relative paths to its source code.
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
-
-
-
-
-
-
-
-
 
 add_library( # Sets the name of the library.
         fclient
@@ -31,25 +26,6 @@ add_library( # Sets the name of the library.
 
         # Provides a relative path to your source file(s).
         native-lib.cpp)
-
-add_library(spdlog STATIC IMPORTED)
-set_target_properties(spdlog PROPERTIES IMPORTED_LOCATION
-        /home/user/Projects/libs/spdlog/build/libspdlog.a)
-target_include_directories(fclient PUBLIC
-        /home/user/Projects/libs/spdlog/include)
-
-
-add_library(mbedcrypto SHARED IMPORTED)
-set_target_properties(mbedcrypto PROPERTIES IMPORTED_LOCATION
-        /home/user/Projects/libs/mbedtls/build/x86_64/library/libmbedcrypto.so)
-
-target_include_directories(fclient PUBLIC
-         /home/user/Projects/libs/spdlog/include
-        /home/user/Projects/libs/mbedtls/mbedtls/include
-        )
-
-
-
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -68,13 +44,14 @@ find_library( # Sets the name of the path variable.
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
 
+
+add_library(spdlog STATIC IMPORTED)
+set_target_properties(spdlog PROPERTIES IMPORTED_LOCATION
+        /home/essential/AndroidStudioProjects/libs/build/arm64-v8a/libspdlog.a)
+target_include_directories(fclient PUBLIC
+        /home/essential/AndroidStudioProjects/libs/spdlog/include)
 target_link_libraries( # Specifies the target library.
         fclient
-        spdlog
         # Links the target library to the log library
         # included in the NDK.
-        mbedcrypto
         ${log-lib})
-
-
-

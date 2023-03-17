@@ -17,4 +17,3 @@ Java_ru_iu3_fclient_MainActivity_stringFromJNI(JNIEnv* env, jobject /* this */) 
     SLOG_INFO("Hello from spdlog {0}", 2023);
     return env->NewStringUTF(hello.c_str());
 }
-    

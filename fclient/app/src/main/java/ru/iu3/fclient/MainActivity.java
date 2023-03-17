@@ -27,15 +27,10 @@ public class MainActivity extends AppCompatActivity {
         TextView tv = binding.sampleText;
         tv.setText(stringFromJNI());
     }
-    static {
-        System.loadLibrary("native-lib");
-        System.loadLibrary("mbedcrypto");
-    }
+
     /**
      * A native method that is implemented by the 'fclient' native library,
      * which is packaged with this application.
      */
     public native String stringFromJNI();
 }
-
-
