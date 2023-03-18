@@ -48,6 +48,7 @@ find_library( # Sets the name of the path variable.
 add_library(spdlog STATIC IMPORTED)
 set_target_properties(spdlog PROPERTIES IMPORTED_LOCATION
         /home/essential/AndroidStudioProjects/libs/build/arm64-v8a/libspdlog.a)
+
 target_include_directories(fclient PUBLIC
         /home/essential/AndroidStudioProjects/libs/spdlog/include)
 target_link_libraries( # Specifies the target library.
@@ -55,3 +56,20 @@ target_link_libraries( # Specifies the target library.
         # Links the target library to the log library
         # included in the NDK.
         ${log-lib})
+add_library(mbedcrypto SHARED IMPORTED)
+set_target_properties(mbedcrypto PROPERTIES IMPORTED_LOCATION
+        /home/essential/AndroidStudioProjects/fclient/app/src/main/nativeLibs/arm64-v8a/libmbedcrypto.so)
+target_include_directories(fclient PUBLIC
+        /home/essential/AndroidStudioProjects/libs/spdlog/include
+        /home/essential/AndroidStudioProjects/libs/mbedtls/mbedtls/include
+        )
+
+target_link_libraries( # Specifies the target library.
+        fclient
+        mbedcrypto
+        ${log-lib}
+        )
+
+
+
+
