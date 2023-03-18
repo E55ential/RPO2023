@@ -22,7 +22,7 @@ auto android_logger = spdlog::android_logger_mt("android", "fclient_ndk");
 
 extern "C" JNIEXPORT jstring JNICALL
 Java_ru_iu3_fclient_MainActivity_stringFromJNI(JNIEnv* env, jobject /* this */) {
-    std::string hello = "Hello from C++";
+    std::string hello = "With love";
     LOG_INFO("Hello from c++ %d", 2023);
     SLOG_INFO("Hello from spdlog {0}", 2023);
     return env->NewStringUTF(hello.c_str());
