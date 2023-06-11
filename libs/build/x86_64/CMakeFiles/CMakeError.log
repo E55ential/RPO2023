@@ -1,0 +1,73 @@
+Performing C++ SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/essential/AndroidStudioProjects/libs/build/x86_64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_7d9e8/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_7d9e8.dir/build.make CMakeFiles/cmTC_7d9e8.dir/build
+gmake[1]: вход в каталог «/home/essential/AndroidStudioProjects/libs/build/x86_64/CMakeFiles/CMakeTmp»
+Building CXX object CMakeFiles/cmTC_7d9e8.dir/src.cxx.o
+/home/essential/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --sysroot=/home/essential/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/sysroot -DCMAKE_HAVE_LIBC_PTHREAD  -DSPDLOG_COMPILED_LIB  -O2 -g -DNDEBUG -fPIE -std=c++11 -MD -MT CMakeFiles/cmTC_7d9e8.dir/src.cxx.o -MF CMakeFiles/cmTC_7d9e8.dir/src.cxx.o.d -o CMakeFiles/cmTC_7d9e8.dir/src.cxx.o -c /home/essential/AndroidStudioProjects/libs/build/x86_64/CMakeFiles/CMakeTmp/src.cxx
+/home/essential/AndroidStudioProjects/libs/build/x86_64/CMakeFiles/CMakeTmp/src.cxx:13:3: error: use of undeclared identifier 'pthread_cancel'
+  pthread_cancel(thread);
+  ^
+1 error generated.
+gmake[1]: *** [CMakeFiles/cmTC_7d9e8.dir/build.make:79: CMakeFiles/cmTC_7d9e8.dir/src.cxx.o] Ошибка 1
+gmake[1]: выход из каталога «/home/essential/AndroidStudioProjects/libs/build/x86_64/CMakeFiles/CMakeTmp»
+gmake: *** [Makefile:127: cmTC_7d9e8/fast] Ошибка 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/essential/AndroidStudioProjects/libs/build/x86_64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_8fd03/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_8fd03.dir/build.make CMakeFiles/cmTC_8fd03.dir/build
+gmake[1]: вход в каталог «/home/essential/AndroidStudioProjects/libs/build/x86_64/CMakeFiles/CMakeTmp»
+Building CXX object CMakeFiles/cmTC_8fd03.dir/CheckFunctionExists.cxx.o
+/home/essential/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --sysroot=/home/essential/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/sysroot   -DSPDLOG_COMPILED_LIB -DCHECK_FUNCTION_EXISTS=pthread_create -O2 -g -DNDEBUG -fPIE -std=c++11 -MD -MT CMakeFiles/cmTC_8fd03.dir/CheckFunctionExists.cxx.o -MF CMakeFiles/cmTC_8fd03.dir/CheckFunctionExists.cxx.o.d -o CMakeFiles/cmTC_8fd03.dir/CheckFunctionExists.cxx.o -c /home/essential/AndroidStudioProjects/libs/build/x86_64/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
+Linking CXX executable cmTC_8fd03
+/home/essential/Android/Sdk/cmake/3.22.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8fd03.dir/link.txt --verbose=1
+/home/essential/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --sysroot=/home/essential/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/sysroot -DSPDLOG_COMPILED_LIB -DCHECK_FUNCTION_EXISTS=pthread_create -O2 -g -DNDEBUG -Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,--fatal-warnings -Qunused-arguments -Wl,--no-undefined  -Wl,--gc-sections  CMakeFiles/cmTC_8fd03.dir/CheckFunctionExists.cxx.o -o cmTC_8fd03  -lpthreads  -static-libstdc++ -latomic -lm 
+ld: error: unable to find library -lpthreads
+clang-12: error: linker command failed with exit code 1 (use -v to see invocation)
+gmake[1]: *** [CMakeFiles/cmTC_8fd03.dir/build.make:100: cmTC_8fd03] Ошибка 1
+gmake[1]: выход из каталога «/home/essential/AndroidStudioProjects/libs/build/x86_64/CMakeFiles/CMakeTmp»
+gmake: *** [Makefile:127: cmTC_8fd03/fast] Ошибка 2
+
+
+
+Determining if the function pthread_create exists in the pthread failed with the following output:
+Change Dir: /home/essential/AndroidStudioProjects/libs/build/x86_64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_0f08c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_0f08c.dir/build.make CMakeFiles/cmTC_0f08c.dir/build
+gmake[1]: вход в каталог «/home/essential/AndroidStudioProjects/libs/build/x86_64/CMakeFiles/CMakeTmp»
+Building CXX object CMakeFiles/cmTC_0f08c.dir/CheckFunctionExists.cxx.o
+/home/essential/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --sysroot=/home/essential/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/sysroot   -DSPDLOG_COMPILED_LIB -DCHECK_FUNCTION_EXISTS=pthread_create -O2 -g -DNDEBUG -fPIE -std=c++11 -MD -MT CMakeFiles/cmTC_0f08c.dir/CheckFunctionExists.cxx.o -MF CMakeFiles/cmTC_0f08c.dir/CheckFunctionExists.cxx.o.d -o CMakeFiles/cmTC_0f08c.dir/CheckFunctionExists.cxx.o -c /home/essential/AndroidStudioProjects/libs/build/x86_64/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
+Linking CXX executable cmTC_0f08c
+/home/essential/Android/Sdk/cmake/3.22.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0f08c.dir/link.txt --verbose=1
+/home/essential/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android21 --sysroot=/home/essential/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/sysroot -DSPDLOG_COMPILED_LIB -DCHECK_FUNCTION_EXISTS=pthread_create -O2 -g -DNDEBUG -Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,--fatal-warnings -Qunused-arguments -Wl,--no-undefined  -Wl,--gc-sections  CMakeFiles/cmTC_0f08c.dir/CheckFunctionExists.cxx.o -o cmTC_0f08c  -lpthread  -static-libstdc++ -latomic -lm 
+ld: error: unable to find library -lpthread
+clang-12: error: linker command failed with exit code 1 (use -v to see invocation)
+gmake[1]: *** [CMakeFiles/cmTC_0f08c.dir/build.make:100: cmTC_0f08c] Ошибка 1
+gmake[1]: выход из каталога «/home/essential/AndroidStudioProjects/libs/build/x86_64/CMakeFiles/CMakeTmp»
+gmake: *** [Makefile:127: cmTC_0f08c/fast] Ошибка 2
+
+
+
